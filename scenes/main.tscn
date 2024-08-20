@@ -1,0 +1,68 @@
+[gd_scene load_steps=7 format=3 uid="uid://dxvvlck8lej3f"]
+
+[ext_resource type="Environment" uid="uid://jvmpkdwaeaq" path="res://scenes/main-environment.tres" id="1_q8fpv"]
+[ext_resource type="PackedScene" uid="uid://dl2ed4gkybggf" path="res://objects/default/player.tscn" id="2_elriq"]
+[ext_resource type="Script" path="res://scripts/hud.gd" id="3_s8mkj"]
+[ext_resource type="FontFile" uid="uid://biqtga8moh7ah" path="res://fonts/lilita_one_regular.ttf" id="3_w27de"]
+[ext_resource type="PackedScene" uid="uid://bfkako4eqtlji" path="res://objects/test_2.tscn" id="5_23bud"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_fpmwk"]
+font = ExtResource("3_w27de")
+font_size = 36
+outline_size = 12
+outline_color = Color(0, 0, 0, 0.470588)
+
+[node name="main" type="Node3D"]
+
+[node name="worldenvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("1_q8fpv")
+
+[node name="player" parent="." node_paths=PackedStringArray("crosshair") instance=ExtResource("2_elriq")]
+crosshair = NodePath("../hud/crosshair")
+
+[node name="sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.422618, -0.694272, 0.582563, 0, 0.642788, 0.766044, -0.906308, 0.323744, -0.271654, 0, 0, 0)
+light_energy = 0.126
+shadow_enabled = true
+shadow_opacity = 0.75
+
+[node name="hud" type="CanvasLayer" parent="."]
+script = ExtResource("3_s8mkj")
+
+[node name="crosshair" type="TextureRect" parent="hud"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.35, 0.35)
+pivot_offset = Vector2(64, 64)
+
+[node name="health" type="Label" parent="hud"]
+offset_left = 48.0
+offset_top = 627.0
+offset_right = 138.0
+offset_bottom = 672.0
+size_flags_horizontal = 0
+size_flags_vertical = 8
+text = "100%"
+label_settings = SubResource("LabelSettings_fpmwk")
+vertical_alignment = 2
+
+[node name="level" type="Node" parent="."]
+
+[node name="lights" type="Node" parent="level"]
+
+[node name="SpotLight3D" type="SpotLight3D" parent="level/lights"]
+transform = Transform3D(0.872465, 0.021883, 0.488187, -0.427976, -0.448001, 0.784941, 0.235885, -0.893765, -0.381499, 2.78773, 2.69115, -3.48224)
+spot_range = 12.2925
+
+[node name="platform" parent="level" instance=ExtResource("5_23bud")]
+
+[connection signal="health_updated" from="player" to="hud" method="_on_health_updated"]

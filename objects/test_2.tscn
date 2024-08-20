@@ -1,0 +1,56 @@
+[gd_scene load_steps=6 format=4 uid="uid://bfkako4eqtlji"]
+
+[ext_resource type="PackedScene" uid="uid://ww0rhk2oe8x2" path="res://models/test.glb" id="1_nw7xu"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dg3ye"]
+resource_name = "Material"
+cull_mode = 2
+albedo_color = Color(0.906332, 0.906332, 0.906332, 1)
+roughness = 0.5
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_7tuwc"]
+_surfaces = [{
+"aabb": AABB(-1, -1, -1, 2, 2, 2),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray("AAAGAAQAAAACAAYAAwAGAAIAAwAHAAYABwAEAAYABwAFAAQABQADAAEABQAHAAMAAQACAAAAAQADAAIABQAAAAQABQABAAAA"),
+"name": "Material",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("/////wAAAAD//wAAAAAAAP///////wAA//8AAP//AAAAAP//AAAAAAAAAAAAAAAAAAD/////AAAAAAAA//8AAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_p2p7n"]
+resource_name = "test_Cube"
+_surfaces = [{
+"aabb": AABB(-1, -1, -1, 2, 2, 2),
+"attribute_data": PackedByteArray("/5//f/9f/3//n/8//1//P/+f/7//3/9//x//f/9f/7//nwAA/5/////f/z//H/8//18AAP9f//8="),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray("AAAKAAUAAAACAAoAAwAIAAIAAwAMAAgADQAEAAkADQAHAAQABgADAAEABgALAAMAAQACAAAAAQADAAIABwAAAAQABwABAAAA"),
+"material": SubResource("StandardMaterial3D_dg3ye"),
+"name": "Material",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 14,
+"vertex_data": PackedByteArray("/////wAA+vT//wAAAADq2v///////wTd//8AAP//gLYAAP//AABv2QAA//8AAOLoAAAAAAAAk+EAAAAAAAAa+wAA/////0rAAAD/////SsAAAP////+H9gAAAAD//z+oAAAAAP//c9EAAAAA//9z0Tg9eiDjJzBLZimyDGsRyzj6yua6GHXM0rEnn4v6ylDXufjFyLn4xciCaJuenEIZrzDQs/kw0LP5")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_7tuwc")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_gbrr1"]
+data = PackedVector3Array(1, 1, -1, -1, 1, 1, -1, 1, -1, 1, 1, -1, 1, 1, 1, -1, 1, 1, 1, -1, 1, -1, 1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, 1, -1, -1, 1, -1, 1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, -1, -1, 1, -1, 1, 1, -1, -1, -1, -1, -1, -1, -1, 1, 1, -1, 1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, 1, 1, 1, -1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, 1, 1, -1)
+
+[node name="platform" instance=ExtResource("1_nw7xu")]
+
+[node name="Cube" parent="." index="0"]
+transform = Transform3D(6.14535, 0, 0, 0, 1, 0, 0, 0, 6.0553, 0, -0.996655, 0)
+mesh = SubResource("ArrayMesh_p2p7n")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Cube" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cube/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("ConcavePolygonShape3D_gbrr1")

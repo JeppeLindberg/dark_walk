@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://cxw1e4a3lyimf"]
+
+[ext_resource type="PackedScene" uid="uid://k065rxqtim8f" path="res://models/default/platform-large-grass.glb" id="1_epjhb"]
+[ext_resource type="PackedScene" uid="uid://ww0rhk2oe8x2" path="res://models/test.glb" id="2_f8jtg"]
+[ext_resource type="PackedScene" uid="uid://beaer7x07yif6" path="res://models/default/grass.glb" id="2_s78yx"]
+[ext_resource type="PackedScene" uid="uid://das5fosq6auoe" path="res://models/default/grass-small.glb" id="3_ejhp8"]
+
+[node name="test_platform" instance=ExtResource("1_epjhb")]
+
+[node name="test" parent="." index="0" instance=ExtResource("2_f8jtg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.487543, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="test" index="1"]
+
+[node name="platform-large-grass2" parent="." index="1"]
+visible = false
+
+[node name="grass" parent="." index="2" instance=ExtResource("2_s78yx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.57788, 0.5, 1.72158)
+visible = false
+
+[node name="grass-small" parent="." index="3" instance=ExtResource("3_ejhp8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.88646, 0.5, -1.59607)
+visible = false
+
+[node name="grass2" parent="." index="4" instance=ExtResource("2_s78yx")]
+transform = Transform3D(0.782521, 0, 0.622624, 0, 1, 0, -0.622624, 0, 0.782521, 1.46331, 0.5, -1.52249)
+visible = false
+
+[node name="test2" parent="." index="5" instance=ExtResource("2_f8jtg")]
