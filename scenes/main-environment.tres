@@ -1,7 +1,7 @@
 [gd_resource type="Environment" load_steps=5 format=3 uid="uid://jvmpkdwaeaq"]
 
 [sub_resource type="Gradient" id="Gradient_tio4a"]
-colors = PackedColorArray(0.591319, 0.47222, 0.770854, 1, 0.315871, 0.421528, 0.674528, 1)
+colors = PackedColorArray(0.927324, 0.0927999, 0.382487, 1, 0.16451, 0.387458, 0.326667, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_4e6px"]
 gradient = SubResource("Gradient_tio4a")
@@ -18,7 +18,7 @@ radiance_size = 0
 background_mode = 2
 sky = SubResource("Sky_7bk1c")
 ambient_light_source = 2
-ambient_light_energy = 0.75
+ambient_light_energy = 0.59
 reflected_light_source = 1
 tonemap_mode = 2
 ssao_enabled = true

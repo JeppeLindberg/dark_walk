@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://65cpae3fesus"]
+
+[ext_resource type="Script" path="res://scripts/beam.gd" id="1_1q6rl"]
+[ext_resource type="PackedScene" uid="uid://dhried31s0umi" path="res://objects/single_beam.tscn" id="2_ub5it"]
+
+[node name="beam" type="Node3D"]
+script = ExtResource("1_1q6rl")
+single_beam = ExtResource("2_ub5it")
