@@ -12,6 +12,7 @@ point_count = 2
 
 [node name="single_beam" type="Node3D"]
 script = ExtResource("1_jm2uq")
+line_resoultion = 5
 
 [node name="polygon" type="CSGPolygon3D" parent="."]
 layers = 2
@@ -19,8 +20,8 @@ flip_faces = true
 polygon = PackedVector2Array(0, 0.05, 0.025, 0.0433013, 0.0433013, 0.025, 0.05, 3.06152e-18, 0.0433013, -0.025, 0.025, -0.0433013, 6.12303e-18, -0.05, -0.025, -0.0433013, -0.0433013, -0.025, -0.05, -9.18455e-18, -0.0433013, 0.025, -0.025, 0.0433013)
 mode = 2
 path_node = NodePath("../path")
-path_interval_type = 0
-path_interval = 100.0
+path_interval_type = 1
+path_interval = 1.0
 path_simplify_angle = 0.0
 path_rotation = 2
 path_local = false

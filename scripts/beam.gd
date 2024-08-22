@@ -10,6 +10,8 @@ extends Node3D
 
 var start_time = 0;
 var beams = []
+var total_length = 0.0;
+var finished = false;
 
 func start_beam(new_points):
 	start_time = main.curr_secs();
@@ -24,8 +26,12 @@ func start_beam(new_points):
 		var beam_length = start_point.distance_to(end_point);
 
 		beams.append([beam_length, new_single_beam, start_point, end_point]);
+		total_length += beam_length;
 
 func _process(_delta: float):
+	if finished:
+		return;
+
 	var elapsed_time = main.curr_secs() - start_time;
 	var processed = elapsed_time * beam_speed;
 	var accu_length = 0.0;
@@ -43,3 +49,6 @@ func _process(_delta: float):
 		path.curve.add_point(lerp(beam[2], beam[3], min((processed - accu_length) / beam[0], 1)));
 
 		accu_length += beam[0];
+	
+	if accu_length > total_length:
+		finished = true;

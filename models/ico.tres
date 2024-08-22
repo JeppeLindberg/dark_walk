@@ -1,6 +1,6 @@
 [gd_resource type="ArrayMesh" load_steps=3 format=4 uid="uid://bu1j6b472iqfu"]
 
-[ext_resource type="Material" uid="uid://cg7sholkjq2x6" path="res://materials/green_glow.tres" id="1_0lq05"]
+[ext_resource type="Material" uid="uid://b3dp37rf7b5fq" path="res://materials/red_glow.tres" id="1_s0nm2"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_aclyn"]
 _surfaces = [{
@@ -23,7 +23,7 @@ _surfaces = [{
 "format": 34896613399,
 "index_count": 60,
 "index_data": PackedByteArray("AAAKAAUABwAaAAEABAAQAA0AAwAXAA8AAgAdABUACQA2ABwACwAeAAYAEwAnAA4AGAArABEAGQAtABQACAAgADUADAAkACIAEgAsACYAFgAxACkAGwA0AC8AHwA3ADIAIwA5ACEAKgA7ACUAMAA6ACgAMwA4AC4A"),
-"material": ExtResource("1_0lq05"),
+"material": ExtResource("1_s0nm2"),
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
 "vertex_count": 60,

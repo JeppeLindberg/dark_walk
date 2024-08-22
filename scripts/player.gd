@@ -89,7 +89,7 @@ func _physics_process(delta):
 	
 	# Falling/respawning
 	
-	if position.y < -10:
+	if position.y < -1000:
 		get_tree().reload_current_scene()
 
 	sub_camera.global_position = camera.global_position
@@ -221,5 +221,4 @@ func get_reflecting_positions_helper(result, position_from, position_to):
 		return get_reflecting_positions_helper(result, reflected_beam_from, reflected_beam_to)
 
 	result.append(ray_to)
-	print('done')
 	return result

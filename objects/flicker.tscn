@@ -1,7 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://gxda82iiwq1s"]
+[gd_scene load_steps=9 format=4 uid="uid://gxda82iiwq1s"]
 
 [ext_resource type="Script" path="res://scripts/flicker.gd" id="1_nomj1"]
-[ext_resource type="ArrayMesh" uid="uid://bu1j6b472iqfu" path="res://models/ico.tres" id="2_8tnxc"]
+[ext_resource type="Material" uid="uid://cg7sholkjq2x6" path="res://materials/green_glow.tres" id="2_crx2i"]
 
 [sub_resource type="Curve" id="Curve_slb7u"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.0153374, 1), 0.0, 0.0, 0, 0, Vector2(0.0981595, 0.90534), 0.0, 0.0, 0, 0, Vector2(0.202454, 0.90534), 0.0, 0.0, 0, 0, Vector2(0.309816, 0.818568), 0.0, 0.0, 0, 0, Vector2(0.41411, 1), 0.0, 0.0, 0, 0, Vector2(0.493865, 1), 0.0, 0.0, 0, 0, Vector2(0.592024, 0.881675), 0.0, 0.0, 0, 0, Vector2(0.742331, 0.826456), 0.0, 0.0, 0, 0, Vector2(0.871166, 0.90534), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
@@ -11,18 +11,8 @@ point_count = 11
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.211679, 1), 0.0, 0.0, 0, 0, Vector2(0.773723, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 4
 
-[sub_resource type="CurveTexture" id="CurveTexture_thwag"]
+[sub_resource type="CurveTexture" id="CurveTexture_unw20"]
 curve = SubResource("Curve_26oxm")
-
-[sub_resource type="Curve" id="Curve_okx0e"]
-min_value = -1.0
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.25, -1), 0.0, 0.0, 0, 0, Vector2(0.5, 0), 0.0, 0.0, 0, 0, Vector2(0.75, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 5
-
-[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_38ql7"]
-curve_x = SubResource("Curve_okx0e")
-curve_y = SubResource("Curve_okx0e")
-curve_z = SubResource("Curve_okx0e")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_26ugw"]
 lifetime_randomness = 1.0
@@ -35,9 +25,6 @@ spread = 180.0
 flatness = 1.0
 angular_velocity_min = -54.13
 angular_velocity_max = 86.62
-directional_velocity_min = -0.0100161
-directional_velocity_max = 0.0999839
-directional_velocity_curve = SubResource("CurveXYZTexture_38ql7")
 orbit_velocity_min = 9.49949e-08
 orbit_velocity_max = 9.49949e-08
 radial_velocity_min = -2.23517e-05
@@ -46,7 +33,37 @@ gravity = Vector3(0, 0, 0)
 scale_min = 0.01
 scale_max = 0.1
 color = Color(1, 0.94902, 0.94902, 1)
-alpha_curve = SubResource("CurveTexture_thwag")
+alpha_curve = SubResource("CurveTexture_unw20")
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_aclyn"]
+_surfaces = [{
+"aabb": AABB(-0.902563, -0.948794, -0.981286, 1.86231, 1.7483, 1.88092),
+"format": 34896613377,
+"index_count": 60,
+"index_data": PackedByteArray("AAACAAEAAQAFAAAAAAADAAIAAAAEAAMAAAAFAAQAAQAKAAUAAgAGAAEAAwAHAAIABAAIAAMABQAJAAQAAQAGAAoAAgAHAAYAAwAIAAcABAAJAAgABQAKAAkABgALAAoABwALAAYACAALAAcACQALAAgACgALAAkA"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 12,
+"vertex_data": PackedByteArray("u3UAAP91AAAL23FJU7sAACJIA13//wAAAADDdB1yAAB9YoxBxxEAAPb+7DOpHAAAFJmWya/LAABvC4y7WboAAEImcY4APgAACqtplQAAAAD//2iwZWMAAA+A///2SwAA")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_1051u"]
+resource_name = "ico_Icosphere_002"
+_surfaces = [{
+"aabb": AABB(-0.902563, -0.948794, -0.981286, 1.86231, 1.7483, 1.88092),
+"attribute_data": PackedByteArray("iy7//xZd//+ii///Lbr//7no///RRa/X0UWv19FFr9fRRa/X0UWv10UXr9dFF6/XRRev1///r9f//6/Xc9Gv13PRr9dz0a/Xc9Gv13PRr9fooq/X6KKv1+iir9fooq/X6KKv11x0r9dcdK/XXHSv11x0r9dcdK/Xiy5gr4suYK+LLmCviy5gr4suYK8AAGCvAABgr7noYK+56GCvuehgry26YK8tumCvLbpgry26YK8tumCvootgr6KLYK+ii2Cvootgr6KLYK8WXWCvFl1grxZdYK8WXWCvFl1gr9FFEYdcdBGHRRcRh+iiEYdz0RGH"),
+"format": 34896613399,
+"index_count": 60,
+"index_data": PackedByteArray("AAAKAAUABwAaAAEABAAQAA0AAwAXAA8AAgAdABUACQA2ABwACwAeAAYAEwAnAA4AGAArABEAGQAtABQACAAgADUADAAkACIAEgAsACYAFgAxACkAGwA0AC8AHwA3ADIAIwA5ACEAKgA7ACUAMAA6ACgAMwA4AC4A"),
+"material": ExtResource("2_crx2i"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 60,
+"vertex_data": PackedByteArray("u3UAAP912qm7dQAA/3Xuwbt1AAD/dSf/u3UAAP91Cd67dQAA/3WRuAvbcUlTu9qpC9txSVO7YpML23FJU7vuwQvbcUlTu0SkC9txSVO7HrciSANd///aqSJIA13//2KTIkgDXf//u5giSANd//+RuCJIA13//3WvAADDdB1yCd4AAMN0HXKRuAAAw3QdclffAADDdB1yY88AAMN0HXJ1r31ijEHHEZv9fWKMQccRJ/99YoxBxxH07X1ijEHHEQnefWKMQccRV9/2/uwzqRyb/fb+7DOpHO7B9v7sM6kcId/2/uwzqRwet/b+7DOpHCf/FJmWya/LYpMUmZbJr8sWtxSZlsmvy0SkFJmWya/Lz68UmZbJr8u7mG8LjLtZus+vbwuMu1m6u5hvC4y7WbrJ0W8LjLtZumPPbwuMu1m6da9CJnGOAD4c7kImcY4APvTtQiZxjgA+ydFCJnGOAD5X30ImcY4APmPPCqtplQAAm/0Kq2mVAADu4QqraZUAACHfCqtplQAAHO4Kq2mVAAD07f//aLBlYxa3//9osGVj7uH//2iwZWMh3///aLBlY0Sk//9osGVjHrcPgP//9ksWtw+A///2S+7hD4D///ZLz68PgP//9ksc7g+A///2S8nR6zVfY05a3Eo7e1wxz1LI/oY/StLrNV9jt5rfKk5a3Ep7phgpO3xhFOs1X2O3mt8qMuiEoIY/StLaXxHjz1LI/oY/StJSni70yZ9E09pfEeMQe1cTO3tcMex/HvTPUsj+Up4u9BB7VxNOWtxKWqEAEjt8YRQ7e1wxt5rfKtvPAT97phgpcfCHkDLohKBx8IeQMuiEoNqhHszJn0TT2l8R4wqD1eTsfx702qEezFKeLvTJn0TTEHtXE+6vbRVaoQASCoPV5Ox/HvTbzwE/7q9tFVqhABJ7phgpO3xhFNvPAT/ur20VcfCHkAqD1eTaoR7M")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_aclyn")
 
 [node name="flicker" type="Node3D"]
 
@@ -59,8 +76,7 @@ curve = SubResource("Curve_slb7u")
 speed = 0.05
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
-lifetime = 100000.0
-preprocess = 600.0
+lifetime = 10000.0
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_26ugw")
-draw_pass_1 = ExtResource("2_8tnxc")
+draw_pass_1 = SubResource("ArrayMesh_1051u")
