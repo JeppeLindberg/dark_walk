@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://h171yv70ill8"]
+
+[ext_resource type="ArrayMesh" uid="uid://dovmhahbh7d27" path="res://models/light_pillar.tres" id="1_n0l6p"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_oifx3"]
+lifetime_randomness = 0.1
+particle_flag_align_y = true
+particle_flag_rotate_y = true
+emission_shape = 1
+emission_sphere_radius = 1.0
+angle_min = -311.2
+angle_max = 418.1
+direction = Vector3(0, 1, 0)
+spread = 5.0
+initial_velocity_max = 6.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.3
+
+[node name="light_pillars" type="Node3D"]
+transform = Transform3D(1, 0, 1.49012e-08, 0, 1, 0, -1.49012e-08, 0, 1, 0, 0, 0)
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+amount = 2
+process_material = SubResource("ParticleProcessMaterial_oifx3")
+draw_pass_1 = ExtResource("1_n0l6p")

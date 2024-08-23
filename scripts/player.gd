@@ -149,6 +149,10 @@ func handle_controls(_delta):
 			jump_double = false
 			
 		if(jump_single): action_jump()
+	
+	if Input.is_action_just_pressed("reset"):
+		for beam_instance in beams.get_children():
+			beam_instance.queue_free()
 
 # Handle gravity
 

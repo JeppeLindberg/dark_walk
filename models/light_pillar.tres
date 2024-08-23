@@ -1,0 +1,33 @@
+[gd_resource type="ArrayMesh" load_steps=3 format=4 uid="uid://dovmhahbh7d27"]
+
+[ext_resource type="Material" uid="uid://mobihgnld6e6" path="res://materials/white_glow.tres" id="1_yjvld"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_iqr8n"]
+_surfaces = [{
+"aabb": AABB(-0.315167, -10.4617, -0.363924, 0.630335, 20.5848, 0.545886),
+"format": 34896613377,
+"index_count": 24,
+"index_data": PackedByteArray("AAADAAEAAAACAAMAAgAFAAMAAgAEAAUAAwAFAAEABAABAAUABAAAAAEAAAAEAAIA"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 6,
+"vertex_data": PackedByteArray("/38AAAAAAAD/fyv0AAAAAP//AAD//wAA//++/P//AAAAAAAA//8AAAAA/////wAA")
+}]
+blend_shape_mode = 0
+
+[resource]
+resource_name = "light_pillar_Cylinder"
+_surfaces = [{
+"aabb": AABB(-0.315167, -10.4617, -0.363924, 0.630335, 20.5848, 0.545886),
+"attribute_data": PackedByteArray("/98Iy///j8n/f4/J/58Iy////3//f/9/VNWPyZn6//9U1Y/JVNX/f5m6//9U1f9/qaqPyWTF//+pqo/Jqar/f2SF//+pqv9/"),
+"format": 34896613399,
+"index_count": 24,
+"index_data": PackedByteArray("AQALAAQAAQAIAAsABgAPAAkABgAMAA8ACgAQAAMADgAFABEADgACAAUAAAANAAcA"),
+"material": ExtResource("1_yjvld"),
+"primitive": 3,
+"uv_scale": Vector4(2, 1.74, 0, 0),
+"vertex_count": 18,
+"vertex_data": PackedByteArray("/38AAAAA/z//fwAAAABU1f9/AAAAAFTV/38r9AAAD+f/fyv0AABF2f9/K/QAALba//8AAP//TYD//wAA////P///AAD//1TV//++/P//BZD//778//8P5///vvz///zYAAAAAP//AIAAAAAA////PwAAAAD//1XVAAD/////nY8AAP////8P5wAA/////9LaAAD/f+yAdgH/f///TeXRa0WhfDRJugrb/3//fwAA/3//fwAA/3//f03l0WtuoCgz/3///wAA/3+1gen+/3//f03l0Wuwusna")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_iqr8n")

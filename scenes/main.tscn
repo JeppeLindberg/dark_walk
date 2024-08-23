@@ -1,16 +1,20 @@
-[gd_scene load_steps=30 format=3 uid="uid://dxvvlck8lej3f"]
+[gd_scene load_steps=41 format=3 uid="uid://dxvvlck8lej3f"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_gwycm"]
 [ext_resource type="Environment" uid="uid://jvmpkdwaeaq" path="res://scenes/main-environment.tres" id="1_q8fpv"]
+[ext_resource type="Script" path="res://scripts/self_destroy.gd" id="2_nykcj"]
 [ext_resource type="Script" path="res://scripts/dimmer.gd" id="2_uvmjw"]
 [ext_resource type="Script" path="res://scripts/hud.gd" id="3_s8mkj"]
-[ext_resource type="Texture2D" uid="uid://2jld33y6h5pq" path="res://sprites/crosshair.png" id="4_1hbcj"]
+[ext_resource type="Texture2D" uid="uid://2jld33y6h5pq" path="res://sprites/crosshair_new.png" id="4_1hbcj"]
 [ext_resource type="Script" path="res://scripts/sun.gd" id="4_cpmm7"]
 [ext_resource type="PackedScene" uid="uid://cbvyijop8d2of" path="res://objects/props/terrain_1.tscn" id="5_oyyip"]
 [ext_resource type="PackedScene" uid="uid://bsvl5nlmxsbmn" path="res://objects/props/corridor.tscn" id="6_1fplg"]
 [ext_resource type="PackedScene" uid="uid://dl2ed4gkybggf" path="res://objects/player.tscn" id="6_20lwc"]
+[ext_resource type="Texture2D" uid="uid://iv4h5lfycwtn" path="res://sprites/movement_tutorial.png" id="7_36cux"]
 [ext_resource type="PackedScene" uid="uid://cmod0hx6vhqqf" path="res://objects/props/pylon.tscn" id="7_u5uu5"]
 [ext_resource type="PackedScene" uid="uid://cwl1v507dgji0" path="res://objects/props/gate.tscn" id="8_6mqkr"]
+[ext_resource type="Script" path="res://scripts/texture_visibility.gd" id="8_fy1ic"]
+[ext_resource type="Texture2D" uid="uid://buv8dstqqv2s3" path="res://sprites/shooting_tutorial.png" id="8_kaxdx"]
 [ext_resource type="PackedScene" uid="uid://gxda82iiwq1s" path="res://objects/flicker.tscn" id="8_to0o4"]
 [ext_resource type="PackedScene" uid="uid://dea58xl6hm1rw" path="res://objects/props/cliff_1.tscn" id="9_hbig2"]
 [ext_resource type="PackedScene" uid="uid://cwmxeq12y08mm" path="res://objects/props/platform_1.tscn" id="13_y07w1"]
@@ -25,6 +29,11 @@
 [ext_resource type="PackedScene" uid="uid://diero5uov57il" path="res://objects/props/horizontal_pillar.tscn" id="23_pvlqn"]
 [ext_resource type="PackedScene" uid="uid://bs7k7sac0idav" path="res://objects/props/horizontal_pillar_broken.tscn" id="24_4u75e"]
 [ext_resource type="PackedScene" uid="uid://bye76h4c5yfgm" path="res://objects/props/button.tscn" id="25_csevw"]
+[ext_resource type="PackedScene" uid="uid://cuboe3maw16bs" path="res://objects/props/cracked_floor_2.tscn" id="26_32l48"]
+[ext_resource type="PackedScene" uid="uid://h171yv70ill8" path="res://objects/light_pillars.tscn" id="26_kdnmr"]
+[ext_resource type="PackedScene" uid="uid://bgs1lrmlrtet5" path="res://objects/white_light.tscn" id="26_n1gf8"]
+[ext_resource type="AudioStream" uid="uid://cihccef3eqxha" path="res://sounds/power.ogg" id="26_odkbt"]
+[ext_resource type="Material" uid="uid://mobihgnld6e6" path="res://materials/white_glow.tres" id="29_ytdnx"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5gfoc"]
 size = Vector3(1, 9.56256, 14.1383)
@@ -57,8 +66,40 @@ scale_max = 0.1
 color = Color(1, 0.94902, 0.94902, 1)
 alpha_curve = SubResource("CurveTexture_thwag")
 
+[sub_resource type="BoxMesh" id="BoxMesh_3srml"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5vqk2"]
+
 [node name="main" type="Node3D"]
 script = ExtResource("1_gwycm")
+
+[node name="wasd_dimmer" type="Area3D" parent="."]
+transform = Transform3D(3.50747, 0, 0, 0, 3.50747, 0, 0, 0, 3.50747, 4.5746, 2.46486, 0)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="wasd_dimmer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.457123, 0.0403442)
+shape = SubResource("BoxShape3D_5gfoc")
+
+[node name="shooting_dimmer" type="Area3D" parent="."]
+transform = Transform3D(3.50747, 0, 0, 0, 3.50747, 0, 0, 0, 3.50747, -49.5123, 2.46486, -14.8841)
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("2_nykcj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="shooting_dimmer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.457123, 0.0403442)
+shape = SubResource("BoxShape3D_5gfoc")
+
+[node name="shooting_dimmer2" type="Area3D" parent="."]
+transform = Transform3D(3.50747, 0, 0, 0, 3.50747, 0, 0, 0, 3.50747, -87.7848, 2.46486, -15.1206)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="shooting_dimmer2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.457123, 0.0403442)
+shape = SubResource("BoxShape3D_5gfoc")
 
 [node name="dimmer" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.5187, 2.46486, 0)
@@ -158,6 +199,17 @@ target_energy = 0.0
 transform = Transform3D(0.154193, 0, 0.988041, 0, 1, 0, -0.988041, 0, 0.154193, -9.53674e-07, 0.457123, 0.0403404)
 shape = SubResource("BoxShape3D_5gfoc")
 
+[node name="dimmer10" type="Area3D" parent="."]
+transform = Transform3D(-0.99273, 0, -0.120362, 0, 1, 0, 0.120362, 0, -0.99273, -73.7723, -27.3095, -237.609)
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("2_uvmjw")
+target_energy = 0.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="dimmer10"]
+transform = Transform3D(0.154193, 0, 0.988041, 0, 1, 0, -0.988041, 0, 0.154193, -9.53674e-07, 0.457123, 0.0403404)
+shape = SubResource("BoxShape3D_5gfoc")
+
 [node name="worldenvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("1_q8fpv")
 
@@ -173,6 +225,22 @@ script = ExtResource("4_cpmm7")
 script = ExtResource("3_s8mkj")
 
 [node name="crosshair" type="TextureRect" parent="hud"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_1hbcj")
+
+[node name="crosshair_old" type="TextureRect" parent="hud"]
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -188,11 +256,43 @@ scale = Vector2(0.35, 0.35)
 pivot_offset = Vector2(64, 64)
 texture = ExtResource("4_1hbcj")
 
+[node name="wasd_tutorial" type="TextureRect" parent="hud"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -156.0
+offset_top = -215.0
+offset_right = 156.0
+offset_bottom = -17.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("7_36cux")
+script = ExtResource("8_fy1ic")
+
+[node name="shooting_tutorial" type="TextureRect" parent="hud"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -228.5
+offset_top = -177.0
+offset_right = 228.5
+offset_bottom = -17.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("8_kaxdx")
+script = ExtResource("8_fy1ic")
+target_visibility = 0
+
 [node name="beams" type="Node3D" parent="."]
 
 [node name="Player" parent="." node_paths=PackedStringArray("crosshair") instance=ExtResource("6_20lwc")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -85.0957, -20.1162, -180.223)
-crosshair = NodePath("../hud/crosshair")
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 23.552, 0.977327, 0)
+crosshair = NodePath("../hud/crosshair_old")
 
 [node name="props" type="Node" parent="."]
 
@@ -225,7 +325,7 @@ transform = Transform3D(-0.369228, 0, 0.929339, 0, 1, 0, -0.929339, 0, -0.369228
 transform = Transform3D(-0.415408, 0, 0.909635, 0, 1, 0, -0.909635, 0, -0.415408, -22.622, 0.252561, 3.90781)
 
 [node name="terrain_20" parent="props/area1" instance=ExtResource("5_oyyip")]
-transform = Transform3D(0.961956, 0, -0.273204, 0, 1, 0, 0.273204, 0, 0.961956, -41.3782, 0.252561, -12.0879)
+transform = Transform3D(0.961956, 0.0140413, -0.272843, 0, 0.998678, 0.0513947, 0.273204, -0.0494395, 0.960685, -42.0584, 0.350546, -13.3782)
 
 [node name="terrain_9" parent="props/area1" instance=ExtResource("5_oyyip")]
 transform = Transform3D(-0.369228, 0, 0.929339, 0, 1, 0, -0.929339, 0, -0.369228, 31.6412, -0.535948, -10.5818)
@@ -1015,7 +1115,7 @@ omni_range = 3.56468
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.3595, -3.5145, -23.1125)
 
 [node name="flicker" parent="props/area5/lights" instance=ExtResource("8_to0o4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.8094, -3.5145, -17.3588)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.1141, -3.5145, -16.5921)
 
 [node name="flicker2" parent="props/area5/lights" instance=ExtResource("8_to0o4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.9972, -3.5145, -14.6844)
@@ -1427,7 +1527,10 @@ transform = Transform3D(2.23066, -0.158011, -0.895944, 0, 2.37244, -0.418411, 0.
 transform = Transform3D(2.32611, 0.164575, -0.604721, -0.0552528, 2.36931, 0.432273, 0.624275, -0.403519, 2.2915, -12.814, 1.56048, -22.8202)
 
 [node name="rock_2" parent="props/area6" instance=ExtResource("22_ercg0")]
-transform = Transform3D(-0.606772, 0.183449, 1.10466, 0.368583, 1.21911, 0, -1.05739, 0.319687, -0.633898, 7.56843, 0.51701, -18.0091)
+transform = Transform3D(-0.338277, 0.116574, -0.833286, 0.136708, 0.893785, 0.0695415, 0.83022, -0.0996772, -0.350977, 8.92953, 0.413118, -16.0612)
+
+[node name="rock_3" parent="props/area6" instance=ExtResource("22_ercg0")]
+transform = Transform3D(0.74899, -0.471124, 0.315645, -0.240203, 0.210116, 0.88359, -0.513706, -0.78515, 0.0470588, 9.28188, 3.42835, -13.6476)
 
 [node name="tunnel_wall_13" parent="props/area6" instance=ExtResource("16_4q50g")]
 transform = Transform3D(-2.52967, 0, 1.06738, 0, 2.74564, 0, -1.06738, 0, -2.52967, 52.6504, -15.4482, -44.0009)
@@ -1489,6 +1592,272 @@ transform = Transform3D(-0.836771, -0.0294479, 0.54676, -0.0211935, 0.999546, 0.
 [node name="tunnel_wall_17" parent="props/area6" instance=ExtResource("16_4q50g")]
 transform = Transform3D(-0.961388, 0.157547, 0.225639, 0.166178, 0.9859, 0.0196574, -0.219361, 0.0563946, -0.974013, 10.5406, -11.5097, -66.1425)
 
+[node name="area7" type="Node3D" parent="props"]
+transform = Transform3D(0.985856, 0, -0.167595, 0, 1, 0, 0.167595, 0, 0.985856, -71.6191, -28.1333, -253.233)
+
+[node name="lights" type="Node3D" parent="props/area7"]
+transform = Transform3D(1, 0, 1.49012e-08, 0, 1, 0, -1.49012e-08, 0, 1, 0, 0, 0)
+
+[node name="red_light" parent="props/area7/lights" instance=ExtResource("18_uead6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.548874, -1.49073, -0.0933075)
+omni_range = 4.46631
+
+[node name="red_light3" parent="props/area7/lights" instance=ExtResource("18_uead6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.22864, -5.12069, -4.3873)
+omni_range = 4.46631
+
+[node name="red_light4" parent="props/area7/lights" instance=ExtResource("18_uead6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.89728, -7.27603, -9.92863)
+omni_range = 4.46631
+
+[node name="red_light5" parent="props/area7/lights" instance=ExtResource("18_uead6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.4227, -9.67143, -15.1141)
+omni_range = 4.46631
+
+[node name="red_light6" parent="props/area7/lights" instance=ExtResource("18_uead6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.34222, -9.67143, -16.0845)
+omni_range = 4.46631
+
+[node name="red_light7" parent="props/area7/lights" instance=ExtResource("18_uead6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.2576, -9.97094, -24.2221)
+omni_range = 4.46631
+
+[node name="red_light8" parent="props/area7/lights" instance=ExtResource("18_uead6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.63304, -10.1489, -30.3243)
+omni_range = 4.46631
+
+[node name="red_light2" parent="props/area7/lights" instance=ExtResource("18_uead6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.74051, -0.236101, 6.91638)
+omni_range = 4.46631
+
+[node name="white_light" parent="props/area7/lights" instance=ExtResource("26_n1gf8")]
+transform = Transform3D(0.985856, 0, 0.167595, 0, 1, 0, -0.167595, 0, 0.985856, 6.98271, -5.30873, -47.5893)
+omni_range = 8.93924
+
+[node name="white_light5" parent="props/area7/lights" instance=ExtResource("26_n1gf8")]
+transform = Transform3D(0.985856, 0, 0.167595, 0, 1, 0, -0.167595, 0, 0.985856, 6.98271, -8.49216, -47.5893)
+omni_range = 8.93924
+
+[node name="white_light3" parent="props/area7/lights" instance=ExtResource("26_n1gf8")]
+transform = Transform3D(0.985856, 0, 0.167595, 0, 1, 0, -0.167595, 0, 0.985856, 13.0077, -5.50152, -48.8716)
+omni_range = 6.23311
+
+[node name="white_light6" parent="props/area7/lights" instance=ExtResource("26_n1gf8")]
+transform = Transform3D(0.985856, 0, 0.167595, 0, 1, 0, -0.167595, 0, 0.985856, 16.4285, -4.85575, -50.5667)
+omni_range = 6.23311
+omni_attenuation = 1.0
+
+[node name="white_light8" parent="props/area7/lights" instance=ExtResource("26_n1gf8")]
+transform = Transform3D(0.985856, 0, 0.167595, 0, 1, 0, -0.167595, 0, 0.985856, 6.17917, 1.64822, -48.8243)
+omni_range = 40.143
+omni_attenuation = 1.0
+
+[node name="white_light4" parent="props/area7/lights" instance=ExtResource("26_n1gf8")]
+transform = Transform3D(0.985856, 0, 0.167595, 0, 1, 0, -0.167595, 0, 0.985856, 8.49384, -6.83741, -43.3052)
+omni_range = 6.23311
+
+[node name="white_light2" parent="props/area7/lights" instance=ExtResource("26_n1gf8")]
+transform = Transform3D(0.985856, 0, 0.167595, 0, 1, 0, -0.167595, 0, 0.985856, -1.32451, -5.28267, -46.1228)
+omni_range = 6.1554
+
+[node name="white_light7" parent="props/area7/lights" instance=ExtResource("26_n1gf8")]
+transform = Transform3D(0.985856, 0, 0.167595, 0, 1, 0, -0.167595, 0, 0.985856, -4.76828, -5.28267, -47.2917)
+omni_range = 6.1554
+omni_attenuation = 1.0
+
+[node name="light_pillars" parent="props/area7" instance=ExtResource("26_kdnmr")]
+transform = Transform3D(1, 0, 1.49012e-08, 0, 1, 0, -1.49012e-08, 0, 1, 2.07394, -8.62514, -47.5741)
+
+[node name="light_pillars2" parent="props/area7" instance=ExtResource("26_kdnmr")]
+transform = Transform3D(1, 0, 1.49012e-08, 0, 1, 0, -1.49012e-08, 0, 1, -3.73475, -14.5556, -47.5329)
+
+[node name="light_pillars3" parent="props/area7" instance=ExtResource("26_kdnmr")]
+transform = Transform3D(1, 0, 1.49012e-08, 0, 1, 0, -1.49012e-08, 0, 1, -0.14473, -14.5556, -47.5886)
+
+[node name="light_pillars4" parent="props/area7" instance=ExtResource("26_kdnmr")]
+transform = Transform3D(1, 0, 1.49012e-08, 0, 1, 0, -1.49012e-08, 0, 1, 4.21945, -14.5556, -49.0422)
+
+[node name="light_pillars5" parent="props/area7" instance=ExtResource("26_kdnmr")]
+transform = Transform3D(1, 0, 1.49012e-08, 0, 1, 0, -1.49012e-08, 0, 1, 8.68307, -14.5556, -50.9047)
+
+[node name="light_pillars6" parent="props/area7" instance=ExtResource("26_kdnmr")]
+transform = Transform3D(1, 0, 1.49012e-08, 0, 1, 0, -1.49012e-08, 0, 1, 6.54324, -14.5556, -50.3085)
+
+[node name="light_pillars7" parent="props/area7" instance=ExtResource("26_kdnmr")]
+transform = Transform3D(1, 0, 1.49012e-08, 0, 1, 0, -1.49012e-08, 0, 1, 11.4135, -14.5556, -49.9205)
+
+[node name="light_pillars8" parent="props/area7" instance=ExtResource("26_kdnmr")]
+transform = Transform3D(1, 0, 1.49012e-08, 0, 1, 0, -1.49012e-08, 0, 1, 14.0276, -14.5556, -50.2686)
+
+[node name="light_pillars9" parent="props/area7" instance=ExtResource("26_kdnmr")]
+transform = Transform3D(1, 0, 1.49012e-08, 0, 1, 0, -1.49012e-08, 0, 1, 16.1299, -14.5556, -51.3373)
+
+[node name="light_pillars10" parent="props/area7" instance=ExtResource("26_kdnmr")]
+transform = Transform3D(1, 0, 1.49012e-08, 0, 1, 0, -1.49012e-08, 0, 1, 1.7906, -14.5556, -45.0499)
+
+[node name="light_pillars11" parent="props/area7" instance=ExtResource("26_kdnmr")]
+transform = Transform3D(1, 0, 1.49012e-08, 0, 1, 0, -1.49012e-08, 0, 1, 5.59935, -11.4206, -49.7949)
+
+[node name="light_pillars12" parent="props/area7" instance=ExtResource("26_kdnmr")]
+transform = Transform3D(1, 0, 1.49012e-08, 0, 1, 0, -1.49012e-08, 0, 1, 3.0089, -11.4206, -48.6431)
+
+[node name="light_pillars13" parent="props/area7" instance=ExtResource("26_kdnmr")]
+transform = Transform3D(1, 0, 1.49012e-08, 0, 1, 0, -1.49012e-08, 0, 1, 7.41689, -11.4206, -50.4719)
+
+[node name="light_pillars14" parent="props/area7" instance=ExtResource("26_kdnmr")]
+transform = Transform3D(1, 0, 1.49012e-08, 0, 1, 0, -1.49012e-08, 0, 1, 10.1644, -14.0962, -44.3946)
+
+[node name="light_pillars15" parent="props/area7" instance=ExtResource("26_kdnmr")]
+transform = Transform3D(1, 0, 1.49012e-08, 0, 1, 0, -1.49012e-08, 0, 1, 8.22907, -14.0962, -42.7914)
+
+[node name="light_pillars16" parent="props/area7" instance=ExtResource("26_kdnmr")]
+transform = Transform3D(1, 0, 1.49012e-08, 0, 1, 0, -1.49012e-08, 0, 1, 5.75517, -14.0962, -43.0492)
+
+[node name="light_pillars17" parent="props/area7" instance=ExtResource("26_kdnmr")]
+transform = Transform3D(1, 0, 1.49012e-08, 0, 1, 0, -1.49012e-08, 0, 1, 3.60677, -14.0962, -45.2867)
+
+[node name="power" type="AudioStreamPlayer3D" parent="props/area7"]
+transform = Transform3D(1, 0, 1.49012e-08, 0, 1, 0, -1.49012e-08, 0, 1, 7.10167, -8.39619, -45.6138)
+stream = ExtResource("26_odkbt")
+volume_db = -10.0
+autoplay = true
+max_distance = 80.0
+
+[node name="power2" type="AudioStreamPlayer3D" parent="props/area7"]
+transform = Transform3D(1, 0, 1.49012e-08, 0, 1, 0, -1.49012e-08, 0, 1, 6.39459, -14.1144, -49.783)
+stream = ExtResource("26_odkbt")
+volume_db = -10.0
+autoplay = true
+max_distance = 80.0
+
+[node name="cliff_1" parent="props/area7" instance=ExtResource("9_hbig2")]
+transform = Transform3D(0.983293, 0, -0.182029, 0, 1, 0, 0.182029, 0, 0.983293, -6.10165, -0.354115, 5.83586)
+
+[node name="cliff_2" parent="props/area7" instance=ExtResource("9_hbig2")]
+transform = Transform3D(-0.999997, 0, -0.00235665, 0, 1, 0, 0.00235665, 0, -0.999997, 6.66173, -0.354115, 10.9987)
+
+[node name="cliff_3" parent="props/area7" instance=ExtResource("9_hbig2")]
+transform = Transform3D(-0.99629, 0, -0.0860605, 0, 1, 0, 0.0860605, 0, -0.99629, 17.0102, -10.2525, -21.2779)
+
+[node name="cliff_4" parent="props/area7" instance=ExtResource("9_hbig2")]
+transform = Transform3D(0.96335, 0, 0.268248, 0, 1, 0, -0.268248, 0, 0.96335, 3.33338, -10.2525, -22.86)
+
+[node name="terrain_1" parent="props/area7" instance=ExtResource("5_oyyip")]
+transform = Transform3D(0.950678, 0, -0.310179, 0, 1, 0, 0.310179, 0, 0.950678, -6.66671, -2.0452, 12.4949)
+
+[node name="terrain_2" parent="props/area7" instance=ExtResource("5_oyyip")]
+transform = Transform3D(0.814612, 0, -0.580006, 0, 1, 0, 0.580006, 0, 0.814612, 7.18875, -11.6738, -15.1254)
+
+[node name="terrain_3" parent="props/area7" instance=ExtResource("5_oyyip")]
+transform = Transform3D(0.836766, 0.276299, -0.472738, 0.0588988, 0.812926, 0.579381, 0.544384, -0.51265, 0.663955, 8.0818, -9.7845, -5.79465)
+
+[node name="stair_1" parent="props/area7" instance=ExtResource("21_lkb04")]
+transform = Transform3D(0.395144, 0, 0.918619, 0, 1, 0, -0.918619, 0, 0.395144, 5.42469, -10.6201, -5.49608)
+
+[node name="corridor" parent="props/area7" instance=ExtResource("6_1fplg")]
+transform = Transform3D(-0.122424, 0, 0.992478, 0, 1, 0, -0.992478, 0, -0.122424, 9.26742, -10.8672, -27.3914)
+
+[node name="tunnel_wall_1" parent="props/area7" instance=ExtResource("16_4q50g")]
+transform = Transform3D(-0.10057, 0.0434644, -0.99398, 0.396715, 0.917942, 0, 0.912416, -0.394327, -0.109561, 14.9145, -5.9238, -8.56767)
+
+[node name="tunnel_wall_17" parent="props/area7" instance=ExtResource("16_4q50g")]
+transform = Transform3D(0.354404, 0.0434644, 0.934081, -0.383198, 0.917942, 0.102678, -0.85297, -0.394327, 0.341978, 13.9056, -13.1956, -5.88033)
+
+[node name="tunnel_wall_2" parent="props/area7" instance=ExtResource("16_4q50g")]
+transform = Transform3D(-0.404814, 0.0434644, -0.913365, 0.377028, 0.917942, -0.123421, 0.833052, -0.394327, -0.387983, 10.5339, -0.338433, 3.95148)
+
+[node name="tunnel_wall_5" parent="props/area7" instance=ExtResource("16_4q50g")]
+transform = Transform3D(-0.220059, -0.865458, -0.450064, 0.545737, 0.273191, -0.792173, 0.808546, -0.419941, 0.412194, 8.48676, -0.186724, -12.8418)
+
+[node name="tunnel_wall_6" parent="props/area7" instance=ExtResource("16_4q50g")]
+transform = Transform3D(-0.349157, -0.865457, -0.359268, 0.272203, 0.273191, -0.922644, 0.896658, -0.419941, 0.140194, 4.04615, 5.13394, -0.228775)
+
+[node name="tunnel_wall_3" parent="props/area7" instance=ExtResource("16_4q50g")]
+transform = Transform3D(0.275031, 0.231105, 0.933246, -0.35869, 0.925261, -0.123421, -0.89202, -0.300801, 0.33737, -4.37767, -2.31305, -2.87519)
+
+[node name="tunnel_wall_4" parent="props/area7" instance=ExtResource("16_4q50g")]
+transform = Transform3D(0.275031, 0.231105, 0.933246, -0.35869, 0.925261, -0.123421, -0.89202, -0.300801, 0.33737, -0.732327, -7.47034, -14.8458)
+
+[node name="rock_1" parent="props/area7" instance=ExtResource("22_ercg0")]
+transform = Transform3D(0.412803, 0, -0.91082, 0, 1, 0, 0.91082, 0, 0.412803, 4.76096, -11.0359, -16.7954)
+
+[node name="rock_2" parent="props/area7" instance=ExtResource("22_ercg0")]
+transform = Transform3D(-0.247015, 0, -0.212302, 0, 0.325712, 0, 0.212302, 0, -0.247015, 9.02798, -11.0359, -17.1877)
+
+[node name="rock_3" parent="props/area7" instance=ExtResource("22_ercg0")]
+transform = Transform3D(0.0735939, 0, 0.108686, 0, 0.131258, 0, -0.108686, 0, 0.0735939, 8.29445, -11.0359, -15.9486)
+
+[node name="cracked_floor_2" parent="props/area7" instance=ExtResource("26_32l48")]
+transform = Transform3D(-0.979602, 0.0433542, 0.196215, 0.0912356, 0.965962, 0.242061, -0.179042, 0.255025, -0.950214, 5.79863, -11.2723, -48.273)
+
+[node name="cracked_floor_3" parent="props/area7/cracked_floor_2" instance=ExtResource("26_32l48")]
+transform = Transform3D(0.924671, 7.45058e-09, 0, -2.98023e-08, 0.924671, -5.96046e-08, 0, 1.49012e-08, 0.92467, -0.016449, -2.31064, -0.0435638)
+
+[node name="Cylinder" parent="props/area7/cracked_floor_2/cracked_floor_3" index="0"]
+transform = Transform3D(1, 7.45058e-09, -2.98023e-08, 0, 1, 0, 0, 4.47035e-08, 1, -0.962097, -0.00736237, 0.391846)
+surface_material_override/0 = ExtResource("29_ytdnx")
+
+[node name="cracked_floor_4" parent="props/area7/cracked_floor_2" instance=ExtResource("26_32l48")]
+transform = Transform3D(0.92467, 0, 5.96046e-08, -2.98023e-08, 0.92467, -1.3411e-07, -2.98023e-08, 1.49012e-08, 0.92467, 0.33374, -2.26891, -0.342148)
+
+[node name="Cylinder" parent="props/area7/cracked_floor_2/cracked_floor_4" index="0"]
+transform = Transform3D(1, 7.45058e-09, -2.98023e-08, 0, 1, 0, 0, 4.47035e-08, 1, -0.962097, -0.00736237, 0.391846)
+surface_material_override/0 = ExtResource("29_ytdnx")
+
+[node name="cracked_floor_5" parent="props/area7/cracked_floor_2" instance=ExtResource("26_32l48")]
+transform = Transform3D(0.92467, 0, 5.96046e-08, -2.98023e-08, 0.92467, -1.49012e-07, -2.98023e-08, 1.49012e-08, 0.92467, 1.12534, -2.41864, -0.0430298)
+
+[node name="Cylinder" parent="props/area7/cracked_floor_2/cracked_floor_5" index="0"]
+transform = Transform3D(1, 7.45058e-09, -2.98023e-08, 0, 1, 0, 0, 4.47035e-08, 1, -0.962097, -0.00736237, 0.391846)
+surface_material_override/0 = ExtResource("29_ytdnx")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="props/area7"]
+transform = Transform3D(26.4896, 0, 2.38419e-06, 0, 26.4896, 0, -2.38419e-06, 0, 26.4896, 5.62048, -27.2874, -52.1066)
+mesh = SubResource("BoxMesh_3srml")
+surface_material_override/0 = ExtResource("29_ytdnx")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="props/area7/MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="props/area7/MeshInstance3D/StaticBody3D"]
+shape = SubResource("BoxShape3D_5vqk2")
+
+[node name="tunnel_wall_7" parent="props/area7" instance=ExtResource("16_4q50g")]
+transform = Transform3D(0.869608, 0.335962, -0.361819, 0.423357, -0.884448, 0.196267, -0.254071, -0.323853, -0.911355, 18.1173, -5.44617, -36.5478)
+
+[node name="tunnel_wall_8" parent="props/area7" instance=ExtResource("16_4q50g")]
+transform = Transform3D(0.84378, -0.363798, 0.394572, -0.322976, -0.931367, -0.168053, 0.428628, 0.0143619, -0.903367, -3.43168, -3.42854, -36.9139)
+
+[node name="tunnel_wall_9" parent="props/area7" instance=ExtResource("16_4q50g")]
+transform = Transform3D(-1.35373, -0.0527396, -0.172881, 9.87247e-10, 1.30631, -0.398506, 0.180747, -0.395001, -1.29482, 8.87222, 0.322416, -34.8874)
+
+[node name="tunnel_wall_15" parent="props/area7" instance=ExtResource("16_4q50g")]
+transform = Transform3D(0.608165, -0.0278288, 0.385621, -0.0891998, 0.689294, 0.190421, -0.376194, -0.208428, 0.578255, 17.4231, -3.58698, -36.2175)
+
+[node name="tunnel_wall_16" parent="props/area7" instance=ExtResource("16_4q50g")]
+transform = Transform3D(0.89947, -0.171654, -0.133033, 0.20343, 0.864388, 0.260113, 0.0760206, -0.282095, 0.877982, 2.33435, -2.63405, -35.5554)
+
+[node name="tunnel_wall_14" parent="props/area7" instance=ExtResource("16_4q50g")]
+transform = Transform3D(-1.47382, -0.178259, -0.0833435, -1.11759e-08, 0.629753, -1.34695, 0.19678, -1.3351, -0.624214, 6.88053, 9.65676, -46.7557)
+
+[node name="tunnel_wall_10" parent="props/area7" instance=ExtResource("16_4q50g")]
+transform = Transform3D(0.14152, 0, -1.94526, 0, 1.9504, 0, 1.94526, 0, 0.14152, 22.028, -1.53653, -54.1113)
+
+[node name="tunnel_wall_11" parent="props/area7" instance=ExtResource("16_4q50g")]
+transform = Transform3D(1.47887, 0, -1.27162, 0, 1.9504, 0, 1.27162, 0, 1.47887, 11.6171, -1.53653, -64.9436)
+
+[node name="tunnel_wall_12" parent="props/area7" instance=ExtResource("16_4q50g")]
+transform = Transform3D(-0.435063, 0, 1.90126, 0, 1.9504, 0, -1.90126, 0, -0.435063, -9.65881, -1.53653, -46.4823)
+
+[node name="tunnel_wall_13" parent="props/area7" instance=ExtResource("16_4q50g")]
+transform = Transform3D(1.72809, 0, 0.904308, 0, 1.9504, 0, -0.904308, 0, 1.72809, -0.236485, -1.53653, -60.5711)
+
+[node name="platform_1" parent="." instance=ExtResource("13_y07w1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -57.435, -40.013, -286.776)
+
+[connection signal="body_entered" from="wasd_dimmer" to="hud/wasd_tutorial" method="_on_wasd_dimmer_body_entered" binds= [0.0]]
+[connection signal="body_entered" from="shooting_dimmer" to="hud/shooting_tutorial" method="_on_wasd_dimmer_body_entered" binds= [1.0]]
+[connection signal="body_entered" from="shooting_dimmer2" to="shooting_dimmer" method="_on_shooting_dimmer_2_body_entered"]
+[connection signal="body_entered" from="shooting_dimmer2" to="hud/shooting_tutorial" method="_on_wasd_dimmer_body_entered" binds= [0.0]]
 [connection signal="body_entered" from="dimmer" to="dimmer" method="_on_body_entered"]
 [connection signal="body_entered" from="dimmer2" to="dimmer2" method="_on_body_entered"]
 [connection signal="body_entered" from="dimmer3" to="dimmer3" method="_on_body_entered"]
@@ -1498,6 +1867,7 @@ transform = Transform3D(-0.961388, 0.157547, 0.225639, 0.166178, 0.9859, 0.01965
 [connection signal="body_entered" from="dimmer7" to="dimmer7" method="_on_body_entered"]
 [connection signal="body_entered" from="dimmer8" to="dimmer8" method="_on_body_entered"]
 [connection signal="body_entered" from="dimmer9" to="dimmer9" method="_on_body_entered"]
+[connection signal="body_entered" from="dimmer10" to="dimmer10" method="_on_body_entered"]
 [connection signal="body_entered" from="props/area6/light/button/player_detector" to="props/area6/light/lamp" method="_on_player_detector_body_entered"]
 [connection signal="body_entered" from="props/area6/light/button/player_detector" to="props/area6/light/lamp2" method="_on_player_detector_body_entered"]
 [connection signal="body_entered" from="props/area6/light/button/player_detector" to="props/area6/light/lamp3" method="_on_player_detector_body_entered"]
@@ -1524,3 +1894,6 @@ transform = Transform3D(-0.961388, 0.157547, 0.225639, 0.166178, 0.9859, 0.01965
 [editable path="props/area6/light/lamp3/flicker"]
 [editable path="props/area6/light/button"]
 [editable path="props/area6/light/button/button_collider"]
+[editable path="props/area7/cracked_floor_2/cracked_floor_3"]
+[editable path="props/area7/cracked_floor_2/cracked_floor_4"]
+[editable path="props/area7/cracked_floor_2/cracked_floor_5"]
