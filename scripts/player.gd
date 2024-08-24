@@ -18,9 +18,10 @@ var gamepad_sensitivity := 0.075
 var mouse_captured := true
 
 var movement_velocity: Vector3
-var rotation_target: Vector3 = Vector3(PI/8,PI/2,0)
+var rotation_target: Vector3 = Vector3(PI/16,PI/2,0)
 
 var input_mouse: Vector2
+var input_enabled = true;
 
 var health:int = 100
 var gravity := 0.0
@@ -37,18 +38,34 @@ var tween:Tween
 @onready var sound_footsteps = $SoundFootsteps
 @onready var blaster_cooldown = $Cooldown
 @onready var beams = get_node('/root/main/beams')
+@onready var no_of_beams = get_node('/root/main/hud/white/CenterContainer/VBoxContainer/no_of_beams/number')
+@onready var time_elapsed = get_node('/root/main/hud/white/CenterContainer/VBoxContainer/time_elapsed/number')
+@onready var main = get_node('/root/main')
 
 # Functions
 
 func _ready():	
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
+func _process(_delta: float) -> void:
+	if not input_enabled:
+		return;
+
+	time_elapsed.text = secs_to_time(main.curr_secs())
+
+func secs_to_time(secs: int) -> String:
+	var minutes = int(secs / 60)
+	var seconds = secs % 60
+	return str(minutes) + " minutes " + str(seconds) + " seconds."
+
 func _physics_process(delta):
-	
 	# Handle functions
 	
 	handle_controls(delta)
 	handle_gravity(delta)
+	
+	if not input_enabled:
+		return;
 	
 	# Movement
 
@@ -98,6 +115,9 @@ func _physics_process(delta):
 # Mouse movement
 
 func _input(event):
+	if not input_enabled:
+		return;
+
 	if event is InputEventMouseMotion and mouse_captured:
 		
 		input_mouse = event.relative / mouse_sensitivity
@@ -106,6 +126,20 @@ func _input(event):
 		rotation_target.x -= event.relative.y / mouse_sensitivity
 
 func handle_controls(_delta):
+	if Input.is_action_just_pressed("fullscreen"):
+		if DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_MAXIMIZED:
+			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+		else:
+			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_MAXIMIZED)
+
+	if Input.is_action_just_pressed("restart"):
+		get_tree().reload_current_scene()
+
+	if Input.is_action_just_pressed("exit"):
+		get_tree().quit()
+
+	if not input_enabled:
+		return;
 	
 	# Mouse capture
 	
@@ -157,6 +191,8 @@ func handle_controls(_delta):
 # Handle gravity
 
 func handle_gravity(delta):
+	if not input_enabled:
+		return;
 	
 	gravity += 20 * delta
 	
@@ -168,6 +204,8 @@ func handle_gravity(delta):
 # Jumping
 
 func action_jump():
+	if not input_enabled:
+		return;
 	
 	gravity = -jump_strength
 	
@@ -177,6 +215,8 @@ func action_jump():
 # Shooting
 
 func action_shoot():
+	if not input_enabled:
+		return;
 	
 	if Input.is_action_pressed("shoot"):
 	
@@ -200,8 +240,10 @@ func action_shoot():
 		new_beam.global_position = Vector3.ZERO;
 		new_beam.start_beam(beam_points)
 
+		no_of_beams.text = str(int(no_of_beams.text) + 1)
+
 func get_reflecting_positions():
-	var position_from = camera.project_ray_origin(get_viewport().size/2)
+	var position_from = camera.project_ray_origin(get_viewport().size/2) + Vector3.DOWN * 0.1
 	var position_to = position_from + camera.project_ray_normal(get_viewport().size/2) * 100
 	var result = [position_from]
 	return get_reflecting_positions_helper(result, position_from, position_to)
@@ -226,3 +268,7 @@ func get_reflecting_positions_helper(result, position_from, position_to):
 
 	result.append(ray_to)
 	return result
+
+
+func _on_victory_body_entered(body:Node3D) -> void:
+	input_enabled = false
