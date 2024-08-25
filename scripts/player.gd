@@ -29,7 +29,7 @@ var gravity := 0.0
 var previously_floored := false
 
 var jump_single := true
-var jump_double := true
+var jump_double := false
 
 var tween:Tween
 
@@ -210,7 +210,7 @@ func action_jump():
 	gravity = -jump_strength
 	
 	jump_single = false;
-	jump_double = true;
+	jump_double = false;
 
 # Shooting
 

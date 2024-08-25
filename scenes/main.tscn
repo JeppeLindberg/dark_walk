@@ -387,6 +387,7 @@ horizontal_alignment = 1
 
 [node name="Player" parent="." instance=ExtResource("6_20lwc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.6418, 0.400281, 0)
+weapon_knockback = 0
 
 [node name="props" type="Node" parent="."]
 
@@ -699,6 +700,12 @@ transform = Transform3D(-1, -8.74228e-08, 0, 8.57083e-08, -0.980388, 0.197076, -
 [node name="terrain_10" parent="props/area2" instance=ExtResource("5_oyyip")]
 transform = Transform3D(-1, -8.74228e-08, 0, 8.57083e-08, -0.980388, 0.197076, -1.72289e-08, 0.197076, 0.980388, -8.34353, 12.8657, -51.7633)
 
+[node name="tunnel_wall_13" parent="props/area2" instance=ExtResource("16_4q50g")]
+transform = Transform3D(-2.10038, -0.00234032, 0.286511, -2.44844e-10, 2.11976, 0.0173149, -0.286521, 0.017156, -2.10031, -30.6864, -18.4094, 3.59964)
+
+[node name="tunnel_wall_14" parent="props/area2" instance=ExtResource("16_4q50g")]
+transform = Transform3D(2.03612, -0.0278698, 0.589168, 0.00685909, 2.11844, 0.0765054, -0.589787, -0.0715779, 2.03487, -33.8236, -18.4199, 14.2459)
+
 [node name="area3" type="Node3D" parent="props"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -94.6444, 0, -31.9511)
 
@@ -711,7 +718,7 @@ omni_attenuation = 0.269
 
 [node name="red_light10" parent="props/area3/light" instance=ExtResource("18_uead6")]
 transform = Transform3D(-1, -8.74228e-08, 0, 8.74228e-08, -1, 0, 0, 0, 1, -11.9861, -9.98656, -24.2723)
-omni_range = 2.19855
+omni_range = 2.56311
 omni_attenuation = 0.269
 
 [node name="red_light3" parent="props/area3/light" instance=ExtResource("18_uead6")]
@@ -767,8 +774,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.6322, 2.13809, -10.748)
 omni_range = 4.80741
 omni_attenuation = 0.269
 
+[node name="red_light11" parent="props/area3/light" instance=ExtResource("18_uead6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.6375, -4.08923, -13.0208)
+omni_range = 5.58986
+omni_attenuation = 0.269
+
 [node name="flicker" parent="props/area3/light" instance=ExtResource("8_to0o4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.9298, 6.98985, -20.2472)
+
+[node name="flicker2" parent="props/area3/light" instance=ExtResource("8_to0o4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.7396, 0.823959, -30.0174)
 
 [node name="red_light9" parent="props/area3/light" instance=ExtResource("18_uead6")]
 transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 15.0521, 5.31684, -41.7245)
@@ -848,7 +863,7 @@ transform = Transform3D(0.983245, 0, -0.182287, 0, 1, 0, 0.182287, 0, 0.983245, 
 transform = Transform3D(0.983245, 0, -0.182287, 0, 1, 0, 0.182287, 0, 0.983245, 23.8719, -3.06404, -25.8025)
 
 [node name="platform_17" parent="props/area3" instance=ExtResource("13_y07w1")]
-transform = Transform3D(0.925679, 0, 0.378309, 0, 1, 0, -0.378309, 0, 0.925679, 29.2364, -6.76443, -10.9279)
+transform = Transform3D(0.925679, 0, 0.378309, 0, 1, 0, -0.378309, 0, 0.925679, 29.2364, -6.70773, -10.8867)
 
 [node name="platform_9" parent="props/area3" instance=ExtResource("13_y07w1")]
 transform = Transform3D(0.980292, 0, -0.197555, 0, 1, 0, 0.197555, 0, 0.980292, 2.74284, -6.10897, -49.4407)
@@ -893,7 +908,7 @@ transform = Transform3D(0.979589, 0, -0.20101, 0.0499483, 0.968635, 0.243415, 0.
 transform = Transform3D(0.67633, 0.14653, -0.721877, 0.0499483, 0.968635, 0.243415, 0.734903, -0.200686, 0.647798, 24.0385, -15.7052, -43.8962)
 
 [node name="tunnel_wall_5" parent="props/area3" instance=ExtResource("16_4q50g")]
-transform = Transform3D(0.322776, 0.214985, -0.921736, 0.0499483, 0.968635, 0.243415, 0.945157, -0.124608, 0.301914, 29.1337, -10.8605, -30.0043)
+transform = Transform3D(0.412313, 0.542718, -0.901996, -0.0581679, 0.978982, 0.562451, 1.05107, -0.158718, 0.38496, 27.8632, -11.1194, -25.731)
 
 [node name="tunnel_wall_2" parent="props/area3" instance=ExtResource("16_4q50g")]
 transform = Transform3D(0.979589, 0, -0.20101, 0, 1, 0, 0.20101, 0, 0.979589, 16.6033, -0.67175, -48.952)
@@ -911,7 +926,7 @@ transform = Transform3D(0.871274, 0, -0.490797, -0.16169, 0.944175, -0.287035, 0
 transform = Transform3D(-0.989329, 0, 0.145703, 0, 1, 0, -0.145703, 0, -0.989329, 1.19944, -8.25502, -7.79596)
 
 [node name="tunnel_wall_15" parent="props/area3" instance=ExtResource("16_4q50g")]
-transform = Transform3D(-0.92271, 0.360694, 0.136037, 0.34356, 0.609371, 0.714586, 0.17485, 0.706093, -0.686192, 12.5922, -13.3271, -14.3524)
+transform = Transform3D(-0.92271, 0.360694, 0.136037, 0.34356, 0.609371, 0.714586, 0.17485, 0.706093, -0.686192, 13.1764, -13.7436, -14.0797)
 
 [node name="tunnel_wall_14" parent="props/area3" instance=ExtResource("16_4q50g")]
 transform = Transform3D(-0.989329, 0, 0.145703, 0, 1, 0, -0.145703, 0, -0.989329, -14.6172, -8.25502, -13.65)
@@ -950,7 +965,7 @@ transform = Transform3D(0.495565, 0, -0.868571, 0, 1, 0, 0.868571, 0, 0.495565, 
 transform = Transform3D(0.976398, 0, 0.21598, 0, 1, 0, -0.21598, 0, 0.976398, 20.3648, -7.07228, -11.0129)
 
 [node name="stair_2" parent="props/area3" instance=ExtResource("21_lkb04")]
-transform = Transform3D(-0.301022, 0, 0.953617, 0, 1, 0, -0.953617, 0, -0.301022, 24.3121, -13.7583, -23.6816)
+transform = Transform3D(-0.36681, 0, 0.930296, 0, 1, 0, -0.930296, 0, -0.36681, 24.201, -13.7583, -23.7778)
 
 [node name="rock_9" parent="props/area3" instance=ExtResource("22_ercg0")]
 transform = Transform3D(-0.995546, 0, -0.094282, 0, 1, 0, 0.094282, 0, -0.995546, 21.4361, -12.6097, -16.0993)
@@ -1059,6 +1074,9 @@ transform = Transform3D(1.3714, 0, 0, 0, 1.3714, 0, 0, 0, 1.3714, -25.1073, -12.
 
 [node name="tunnel_wall_24" parent="props/area3" instance=ExtResource("16_4q50g")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.73885, -8.66475, -14.184)
+
+[node name="tunnel_wall_35" parent="props/area3" instance=ExtResource("16_4q50g")]
+transform = Transform3D(1.88808, 0, 0.163559, -0.0385928, 1.84164, 0.445505, -0.158941, -0.447174, 1.83477, 27.4163, -1.56137, -6.69056)
 
 [node name="tunnel_wall_25" parent="props/area3" instance=ExtResource("16_4q50g")]
 transform = Transform3D(0.791384, 0, -0.61132, 0, 1, 0, 0.61132, 0, 0.791384, -33.2803, -8.66475, -18.2951)
@@ -1251,7 +1269,7 @@ transform = Transform3D(0.985856, 0, -0.167595, 0, 1, 0, 0.167595, 0, 0.985856, 
 [node name="lights" type="Node3D" parent="props/area5"]
 
 [node name="red_light2" parent="props/area5/lights" instance=ExtResource("18_uead6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.7585, -5.60079, 11.6091)
+transform = Transform3D(1, 0, 1.49012e-08, 0, 1, 0, -1.49012e-08, 0, 1, -16.2003, -5.6228, 11.8688)
 omni_range = 3.56468
 
 [node name="red_light" parent="props/area5/lights" instance=ExtResource("18_uead6")]
@@ -1272,7 +1290,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.0642, -4.54708, -0.754175
 [node name="light" parent="props/area5/lights/flicker3" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.27911, 0, -0.0101009)
 light_energy = 0.4
-omni_range = 2.04778
+omni_range = 2.65273
 omni_attenuation = 1.0
 
 [node name="flicker2" parent="props/area5/lights" instance=ExtResource("8_to0o4")]
@@ -1452,16 +1470,16 @@ transform = Transform3D(1.33069, -0.697293, 0.255392, 0.707298, 1.34978, 0, -0.2
 transform = Transform3D(1.35755, 0.0685714, -0.125882, -0.102512, 1.30233, -0.3961, 0.100198, 0.403363, 1.30028, 5.52924, 2.10579, -8.29095)
 
 [node name="terrain_12" parent="props/area5" instance=ExtResource("5_oyyip")]
-transform = Transform3D(0.985856, -1.46516e-08, -0.167595, 0, -1, 8.74228e-08, -0.167595, -8.61863e-08, -0.985856, -3.3129, 11.8906, -10.211)
+transform = Transform3D(0.985856, -1.46516e-08, -0.167595, 0, -1, 8.74228e-08, -0.167595, -8.61863e-08, -0.985856, -3.31291, 10.1739, -10.211)
 
 [node name="terrain_13" parent="props/area5" instance=ExtResource("5_oyyip")]
-transform = Transform3D(0.985856, -1.46516e-08, -0.167595, 0, -1, 8.74228e-08, -0.167595, -8.61863e-08, -0.985856, -26.1593, 11.8906, -7.46035)
+transform = Transform3D(0.985856, -1.46516e-08, -0.167595, 0, -1, 8.74228e-08, -0.167595, -8.61863e-08, -0.985856, -26.1593, 8.50807, -7.46036)
 
 [node name="terrain_14" parent="props/area5" instance=ExtResource("5_oyyip")]
-transform = Transform3D(0.985856, -1.46516e-08, -0.167595, 0, -1, 8.74228e-08, -0.167595, -8.61863e-08, -0.985856, 6.23061, 11.8906, 10.761)
+transform = Transform3D(0.985856, -1.46516e-08, -0.167595, 0, -1, 8.74228e-08, -0.167595, -8.61863e-08, -0.985856, 6.23061, 10.8318, 10.761)
 
 [node name="terrain_15" parent="props/area5" instance=ExtResource("5_oyyip")]
-transform = Transform3D(0.985856, -1.46516e-08, -0.167595, 0, -1, 8.74228e-08, -0.167595, -8.61863e-08, -0.985856, -19.2791, 11.8906, 10.0581)
+transform = Transform3D(0.985856, -1.46516e-08, -0.167595, 0, -1, 8.74228e-08, -0.167595, -8.61863e-08, -0.985856, -19.2791, 9.29532, 10.0581)
 
 [node name="rock_6" parent="props/area5" instance=ExtResource("22_ercg0")]
 transform = Transform3D(1.42069, -0.142061, 0.284988, 0.207533, 1.40134, -0.336019, -0.241515, 0.368507, 1.38767, -12.076, 1.06561, -27.1861)
