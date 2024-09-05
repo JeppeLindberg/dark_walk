@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://dxvvlck8lej3f"]
+[gd_scene load_steps=48 format=3 uid="uid://dxvvlck8lej3f"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_gwycm"]
 [ext_resource type="Environment" uid="uid://jvmpkdwaeaq" path="res://scenes/main-environment.tres" id="1_q8fpv"]
@@ -26,6 +26,7 @@
 [ext_resource type="PackedScene" uid="uid://b5iephvnptfys" path="res://objects/props/pylon_large_1.tscn" id="18_ajsir"]
 [ext_resource type="PackedScene" uid="uid://bekxmwcga4nmx" path="res://objects/red_light.tscn" id="18_uead6"]
 [ext_resource type="ArrayMesh" uid="uid://bu1j6b472iqfu" path="res://models/ico.tres" id="19_1if1c"]
+[ext_resource type="PackedScene" uid="uid://bkmiv532otcv6" path="res://objects/red_light_simple.tscn" id="21_iyc8b"]
 [ext_resource type="PackedScene" uid="uid://ba6urv5au4on3" path="res://objects/props/stair_1.tscn" id="21_lkb04"]
 [ext_resource type="PackedScene" uid="uid://n00ce4uim3p6" path="res://objects/props/rock_1.tscn" id="22_ercg0"]
 [ext_resource type="PackedScene" uid="uid://diero5uov57il" path="res://objects/props/horizontal_pillar.tscn" id="23_pvlqn"]
@@ -386,7 +387,7 @@ horizontal_alignment = 1
 [node name="beams" type="Node3D" parent="."]
 
 [node name="Player" parent="." instance=ExtResource("6_20lwc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.6418, 0.400281, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.642, 0.4, 0)
 weapon_knockback = 0
 
 [node name="props" type="Node" parent="."]
@@ -553,14 +554,56 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -68.9814, 0, -16.5027)
 
 [node name="lights" type="Node" parent="props/area2"]
 
-[node name="flicker" parent="props/area2/lights" instance=ExtResource("8_to0o4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -75.2076, 2.38639, -13.293)
-
 [node name="lamp" parent="props/area2/lights" instance=ExtResource("14_clh8p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -80.9907, 10.1713, -8.71799)
 
 [node name="flicker2" parent="props/area2/lights" instance=ExtResource("8_to0o4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74.1108, 2.38639, -6.75175)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -67.7057, 2.38639, -7.68992)
+
+[node name="light" parent="props/area2/lights/flicker2" index="0"]
+omni_range = 10.7887
+omni_attenuation = 0.5
+
+[node name="flicker4" parent="props/area2/lights" instance=ExtResource("8_to0o4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -76.5931, 2.38639, -0.726304)
+
+[node name="light" parent="props/area2/lights/flicker4" index="0"]
+omni_range = 6.18032
+omni_attenuation = 0.5
+
+[node name="flicker5" parent="props/area2/lights" instance=ExtResource("8_to0o4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -92.9262, 2.38639, -1.34175)
+
+[node name="light" parent="props/area2/lights/flicker5" index="0"]
+omni_range = 6.18032
+omni_attenuation = 0.5
+
+[node name="flicker3" parent="props/area2/lights" instance=ExtResource("8_to0o4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -73.2202, 2.38639, -16.5169)
+
+[node name="light" parent="props/area2/lights/flicker3" index="0"]
+omni_range = 10.7887
+omni_attenuation = 0.5
+
+[node name="red_light4" parent="props/area2/lights" instance=ExtResource("21_iyc8b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -93.3329, 3.36778, -17.5113)
+omni_range = 7.24678
+
+[node name="red_light7" parent="props/area2/lights" instance=ExtResource("21_iyc8b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60.1043, 2.80317, -15.0794)
+omni_range = 7.24678
+
+[node name="red_light8" parent="props/area2/lights" instance=ExtResource("21_iyc8b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -49.3284, 2.80317, -13.8415)
+omni_range = 7.24678
+
+[node name="red_light5" parent="props/area2/lights" instance=ExtResource("21_iyc8b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -93.9719, 4.76126, -41.4885)
+omni_range = 8.01329
+
+[node name="red_light6" parent="props/area2/lights" instance=ExtResource("21_iyc8b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -94.0726, 2.53505, -31.8958)
+omni_range = 14.7416
 
 [node name="red_light" parent="props/area2/lights" instance=ExtResource("18_uead6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -94.925, 2.42317, -14.0794)
@@ -712,14 +755,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -94.6444, 0, -31.9511)
 [node name="light" type="Node3D" parent="props/area3"]
 
 [node name="red_light" parent="props/area3/light" instance=ExtResource("18_uead6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.741, -8.90307, -25.751)
-omni_range = 4.80741
-omni_attenuation = 0.269
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.9192, -8.1196, -22.691)
+omni_range = 8.11762
+omni_attenuation = 0.0
 
 [node name="red_light10" parent="props/area3/light" instance=ExtResource("18_uead6")]
 transform = Transform3D(-1, -8.74228e-08, 0, 8.74228e-08, -1, 0, 0, 0, 1, -11.9861, -9.98656, -24.2723)
-omni_range = 2.56311
-omni_attenuation = 0.269
+omni_range = 8.76058
+omni_attenuation = 0.0
 
 [node name="red_light3" parent="props/area3/light" instance=ExtResource("18_uead6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.06578, 15.3194, -16.6254)
@@ -771,23 +814,35 @@ visible = false
 
 [node name="red_light2" parent="props/area3/light" instance=ExtResource("18_uead6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.6322, 2.13809, -10.748)
-omni_range = 4.80741
-omni_attenuation = 0.269
+omni_range = 8.7681
+omni_attenuation = 0.0
 
 [node name="red_light11" parent="props/area3/light" instance=ExtResource("18_uead6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.6375, -4.08923, -13.0208)
-omni_range = 5.58986
-omni_attenuation = 0.269
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.3957, -1.82722, -11.6099)
+omni_range = 8.6887
+omni_attenuation = 0.0
 
 [node name="flicker" parent="props/area3/light" instance=ExtResource("8_to0o4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.9298, 6.98985, -20.2472)
 
+[node name="light" parent="props/area3/light/flicker" index="0"]
+omni_range = 9.27038
+omni_attenuation = 0.5
+
 [node name="flicker2" parent="props/area3/light" instance=ExtResource("8_to0o4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.7396, 0.823959, -30.0174)
 
+[node name="light" parent="props/area3/light/flicker2" index="0"]
+omni_range = 9.25418
+omni_attenuation = 0.5
+
 [node name="red_light9" parent="props/area3/light" instance=ExtResource("18_uead6")]
-transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 15.0521, 5.31684, -41.7245)
-omni_range = 2.80006
+transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 13.128, 5.31684, -40.996)
+omni_range = 9.2721
+
+[node name="red_light12" parent="props/area3/light" instance=ExtResource("18_uead6")]
+transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 19.5511, 1.10634, -30.1018)
+omni_range = 9.2721
 
 [node name="corridor" parent="props/area3" instance=ExtResource("6_1fplg")]
 transform = Transform3D(0.732222, 0, 0.681066, 0, 1, 0, -0.681066, 0, 0.732222, 12.7178, -5.10897, -57.7015)
@@ -1113,29 +1168,38 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -73.7327, -3.17268, -96.2432)
 
 [node name="lights" type="Node3D" parent="props/area4"]
 
+[node name="red_light_simple" parent="props/area4/lights" instance=ExtResource("21_iyc8b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.497047, 0.055681, -0.0318909)
+
+[node name="red_light_simple2" parent="props/area4/lights" instance=ExtResource("21_iyc8b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.16963, 0.055681, 3.23622)
+
+[node name="red_light_simple3" parent="props/area4/lights" instance=ExtResource("21_iyc8b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.1566, 0.055681, 8.81419)
+
 [node name="red_light" parent="props/area4/lights" instance=ExtResource("18_uead6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.914593, 0)
 omni_range = 3.25082
 
 [node name="red_light2" parent="props/area4/lights" instance=ExtResource("18_uead6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.91803, -1.46434, -5.47155)
-omni_range = 3.25082
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.8582, -1.21747, -7.30852)
+omni_range = 8.01454
 
 [node name="red_light3" parent="props/area4/lights" instance=ExtResource("18_uead6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.776, -5.86407, -10.4006)
-omni_range = 3.25082
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.8682, -5.32817, -9.63858)
+omni_range = 5.26539
 
 [node name="red_light4" parent="props/area4/lights" instance=ExtResource("18_uead6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.0708, -5.86407, -14.8005)
-omni_range = 3.25082
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.7268, -5.86407, -15.8141)
+omni_range = 5.5228
 
 [node name="red_light5" parent="props/area4/lights" instance=ExtResource("18_uead6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.2517, -9.05891, -21.1609)
-omni_range = 3.25082
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.72959, -11.3987, -25.1815)
+omni_range = 7.2426
 
 [node name="red_light6" parent="props/area4/lights" instance=ExtResource("18_uead6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.88166, -13.5676, -29.3705)
-omni_range = 3.25082
+omni_range = 5.97022
 
 [node name="red_light7" parent="props/area4/lights" instance=ExtResource("18_uead6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.06441, -14.1518, -27.6854)
@@ -1146,7 +1210,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.06021, -5.9033, -22.4332)
 
 [node name="red_light8" parent="props/area4/lights" instance=ExtResource("18_uead6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.30291, -13.9592, -29.555)
-omni_range = 3.25082
+omni_range = 5.88653
+
+[node name="red_light_simple4" parent="props/area4/lights" instance=ExtResource("21_iyc8b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.30507, -14.3863, -30.2819)
+
+[node name="red_light_simple5" parent="props/area4/lights" instance=ExtResource("21_iyc8b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.9837, -14.3863, -30.3327)
+
+[node name="red_light_simple6" parent="props/area4/lights" instance=ExtResource("21_iyc8b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.5933, -14.3863, -32.5446)
 
 [node name="red_light9" parent="props/area4/lights" instance=ExtResource("18_uead6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.94513, -14.3674, -28.8602)
@@ -1269,8 +1342,34 @@ transform = Transform3D(0.985856, 0, -0.167595, 0, 1, 0, 0.167595, 0, 0.985856, 
 [node name="lights" type="Node3D" parent="props/area5"]
 
 [node name="red_light2" parent="props/area5/lights" instance=ExtResource("18_uead6")]
-transform = Transform3D(1, 0, 1.49012e-08, 0, 1, 0, -1.49012e-08, 0, 1, -16.2003, -5.6228, 11.8688)
-omni_range = 3.56468
+transform = Transform3D(1, 0, 1.49012e-08, 0, 1, 0, -1.49012e-08, 0, 1, -16.0775, -4.97939, 11.1149)
+omni_range = 5.43896
+omni_attenuation = 0.0
+
+[node name="red_light5" parent="props/area5/lights" instance=ExtResource("18_uead6")]
+transform = Transform3D(1, 0, 1.49012e-08, 0, 1, 0, -1.49012e-08, 0, 1, -4.64011, 2.3701, -6.02962)
+omni_range = 5.98822
+omni_attenuation = 0.0
+
+[node name="red_light_simple" parent="props/area5/lights" instance=ExtResource("21_iyc8b")]
+transform = Transform3D(1, 0, 1.49012e-08, 0, 1, 0, -1.49012e-08, 0, 1, -11.9486, -3.16418, -24.2575)
+omni_range = 7.23586
+
+[node name="red_light_simple2" parent="props/area5/lights" instance=ExtResource("21_iyc8b")]
+transform = Transform3D(1, 0, 1.49012e-08, 0, 1, 0, -1.49012e-08, 0, 1, -9.30139, -3.16418, -33.324)
+omni_range = 7.23586
+
+[node name="red_light_simple3" parent="props/area5/lights" instance=ExtResource("21_iyc8b")]
+transform = Transform3D(1, 0, 1.49012e-08, 0, 1, 0, -1.49012e-08, 0, 1, -4.25252, -3.16418, -41.8867)
+omni_range = 7.23586
+
+[node name="red_light_simple4" parent="props/area5/lights" instance=ExtResource("21_iyc8b")]
+transform = Transform3D(1, 0, 1.49012e-08, 0, 1, 0, -1.49012e-08, 0, 1, 1.38534, -3.16418, -47.5886)
+omni_range = 7.23586
+
+[node name="red_light_simple5" parent="props/area5/lights" instance=ExtResource("21_iyc8b")]
+transform = Transform3D(1, 0, 1.49012e-08, 0, 1, 0, -1.49012e-08, 0, 1, 6.96749, -3.16418, -52.6704)
+omni_range = 7.23586
 
 [node name="red_light" parent="props/area5/lights" instance=ExtResource("18_uead6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.3595, -3.5145, -23.1125)
@@ -1284,17 +1383,26 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.32191, -3.68892, -47.5034)
 [node name="flicker" parent="props/area5/lights" instance=ExtResource("8_to0o4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.1141, -3.5145, -16.5921)
 
+[node name="light" parent="props/area5/lights/flicker" index="0"]
+omni_range = 8.56355
+omni_attenuation = 1.0
+
 [node name="flicker3" parent="props/area5/lights" instance=ExtResource("8_to0o4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.0642, -4.54708, -0.754175)
 
 [node name="light" parent="props/area5/lights/flicker3" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.27911, 0, -0.0101009)
 light_energy = 0.4
-omni_range = 2.65273
+omni_range = 5.96687
 omni_attenuation = 1.0
 
 [node name="flicker2" parent="props/area5/lights" instance=ExtResource("8_to0o4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.9972, -3.5145, -14.6844)
+
+[node name="light" parent="props/area5/lights/flicker2" index="0"]
+transform = Transform3D(1, 0, 1.49012e-08, 0, 1, 0, -1.49012e-08, 0, 1, -1.31769, 0, -0.714325)
+omni_range = 9.83098
+omni_attenuation = 1.0
 
 [node name="platform_5" parent="props/area5" instance=ExtResource("13_y07w1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.89243, 0, -7.62939e-06)
@@ -1495,20 +1603,60 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.5062, -2.44155, -59.7038)
 [node name="flicker" parent="props/area6/light" instance=ExtResource("8_to0o4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.377, -1.98961, -61.479)
 
+[node name="red_light_simple" parent="props/area6/light" instance=ExtResource("21_iyc8b")]
+transform = Transform3D(1, 0, 1.49012e-08, 0, 1, 0, -1.49012e-08, 0, 1, 23.5276, -1.3182, -64.5693)
+omni_range = 7.90939
+
+[node name="red_light_simple2" parent="props/area6/light" instance=ExtResource("21_iyc8b")]
+transform = Transform3D(1, 0, 1.49012e-08, 0, 1, 0, -1.49012e-08, 0, 1, 23.5522, -1.3182, -72.3568)
+omni_range = 7.90939
+
+[node name="red_light_simple3" parent="props/area6/light" instance=ExtResource("21_iyc8b")]
+transform = Transform3D(1, 0, 1.49012e-08, 0, 1, 0, -1.49012e-08, 0, 1, 22.3548, -1.3182, -81.3046)
+omni_range = 7.90939
+
+[node name="red_light_simple4" parent="props/area6/light" instance=ExtResource("21_iyc8b")]
+transform = Transform3D(1, 0, 1.49012e-08, 0, 1, 0, -1.49012e-08, 0, 1, 25.7264, -4.18782, -91.3401)
+omni_range = 7.90939
+
+[node name="red_light_simple5" parent="props/area6/light" instance=ExtResource("21_iyc8b")]
+transform = Transform3D(1, 0, 1.49012e-08, 0, 1, 0, -1.49012e-08, 0, 1, 28.7662, -8.31194, -99.2983)
+omni_range = 7.90939
+
+[node name="red_light_simple6" parent="props/area6/light" instance=ExtResource("21_iyc8b")]
+transform = Transform3D(1, 0, 1.49012e-08, 0, 1, 0, -1.49012e-08, 0, 1, 33.1729, -10.9661, -103.823)
+omni_range = 7.90939
+
+[node name="red_light_simple7" parent="props/area6/light" instance=ExtResource("21_iyc8b")]
+transform = Transform3D(1, 0, 1.49012e-08, 0, 1, 0, -1.49012e-08, 0, 1, 31.7062, -11.1136, -111.745)
+omni_range = 7.90939
+
+[node name="red_light_simple8" parent="props/area6/light" instance=ExtResource("21_iyc8b")]
+transform = Transform3D(1, 0, 1.49012e-08, 0, 1, 0, -1.49012e-08, 0, 1, 31.5269, -11.4485, -123.374)
+omni_range = 7.90939
+
 [node name="flicker3" parent="props/area6/light" instance=ExtResource("8_to0o4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.2921, 2.80811, -62.2503)
 
 [node name="red_light2" parent="props/area6/light" instance=ExtResource("18_uead6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.69877, -18.5421, -56.3075)
-omni_range = 3.66831
+omni_range = 7.88023
+omni_attenuation = 0.0
+
+[node name="red_light5" parent="props/area6/light" instance=ExtResource("18_uead6")]
+transform = Transform3D(1, 0, 1.49012e-08, 0, 1, 0, -1.49012e-08, 0, 1, 13.2686, -0.306976, -59.8687)
+omni_range = 7.88023
+omni_attenuation = 0.0
 
 [node name="red_light3" parent="props/area6/light" instance=ExtResource("18_uead6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.6835, -6.48095, -49.9963)
-omni_range = 4.63907
+transform = Transform3D(1, 0, 1.49012e-08, 0, 1, 0, -1.49012e-08, 0, 1, 26.0535, -6.48095, -49.3448)
+omni_range = 6.93956
+omni_attenuation = 0.0
 
 [node name="red_light4" parent="props/area6/light" instance=ExtResource("18_uead6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.4552, -1.52973, -29.0532)
-omni_range = 4.63907
+transform = Transform3D(1, 0, 1.49012e-08, 0, 1, 0, -1.49012e-08, 0, 1, 30.4575, -1.52973, -29.3279)
+omni_range = 6.98331
+omni_attenuation = 0.0
 
 [node name="flicker2" parent="props/area6/light" instance=ExtResource("8_to0o4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.859, -3.63968, -38.5197)
@@ -2060,18 +2208,26 @@ transform = Transform3D(0.985856, 0, 0.167595, 0, 1, 0, -0.167595, 0, 0.985856, 
 [connection signal="body_exited" from="props/area6/light/button/player_detector" to="props/area6/light/lamp2" method="_on_player_detector_body_exited"]
 [connection signal="body_exited" from="props/area6/light/button/player_detector" to="props/area6/light/lamp3" method="_on_player_detector_body_exited"]
 
+[editable path="props/area2/lights/flicker2"]
+[editable path="props/area2/lights/flicker4"]
+[editable path="props/area2/lights/flicker5"]
+[editable path="props/area2/lights/flicker3"]
 [editable path="props/area3/light/red_light3"]
 [editable path="props/area3/light/red_light8"]
 [editable path="props/area3/light/red_light4"]
 [editable path="props/area3/light/red_light5"]
 [editable path="props/area3/light/red_light6"]
 [editable path="props/area3/light/red_light7"]
+[editable path="props/area3/light/flicker"]
+[editable path="props/area3/light/flicker2"]
 [editable path="props/area3/corridor/red_light"]
 [editable path="props/area4/lamp"]
 [editable path="props/area4/lamp/flicker"]
 [editable path="props/area4/lamp2"]
 [editable path="props/area4/lamp2/flicker"]
+[editable path="props/area5/lights/flicker"]
 [editable path="props/area5/lights/flicker3"]
+[editable path="props/area5/lights/flicker2"]
 [editable path="props/area6/light/lamp"]
 [editable path="props/area6/light/lamp/flicker"]
 [editable path="props/area6/light/lamp2"]

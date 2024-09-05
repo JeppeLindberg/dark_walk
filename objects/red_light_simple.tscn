@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bkmiv532otcv6"]
+
+[ext_resource type="Script" path="res://scripts/flicker.gd" id="1_q1268"]
+
+[sub_resource type="Curve" id="Curve_slb7u"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.0153374, 1), 0.0, 0.0, 0, 0, Vector2(0.0981595, 0.90534), 0.0, 0.0, 0, 0, Vector2(0.202454, 0.90534), 0.0, 0.0, 0, 0, Vector2(0.309816, 0.818568), 0.0, 0.0, 0, 0, Vector2(0.41411, 1), 0.0, 0.0, 0, 0, Vector2(0.493865, 1), 0.0, 0.0, 0, 0, Vector2(0.592024, 0.881675), 0.0, 0.0, 0, 0, Vector2(0.742331, 0.826456), 0.0, 0.0, 0, 0, Vector2(0.871166, 0.90534), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 11
+
+[node name="red_light_simple" type="OmniLight3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -93.0936, 2.81513, -15.2876)
+light_color = Color(0.858824, 0.305882, 0.372549, 1)
+light_energy = 0.1
+omni_range = 6.0
+omni_attenuation = 0.0
+script = ExtResource("1_q1268")
+curve = SubResource("Curve_slb7u")
+speed = 0.05
